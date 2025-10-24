@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/*",
-    element: <h2>Error404</h2>,
+    element: <h2>Error-404</h2>,
   },
 ]);
 
