@@ -361,3 +361,9 @@ export default Login;
 // const  navigate=useNavigate() use korbo. "navigate(`${location.state?location.state :"/"}`)" hole location.sate na hole homepage
 
 
+
+
+//================login er somoy error dekhanor jonno login.jsx============
+//1.const [error,setError]=useState() then setError(errorCode)
+//2.registr.jsx e->
+

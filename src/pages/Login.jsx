@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Login = () => {
 
+  //--handle login errro---
+const [error, setError] = useState("");
+
+
+  //--------------------------
 const {signIn}=use(AuthContext);
 const location=useLocation()
 const navigate = useNavigate();
@@ -26,8 +31,9 @@ const navigate = useNavigate();
     })
     .catch((error)=>{
       const errorCode=error.code;
-      const errorMessage=error.message;
-      alert(error,errorMessage);
+      // const errorMessage=error.message;
+      // alert(error,errorMessage);
+      setError(errorCode)
     })
   }
     return (
@@ -41,15 +47,17 @@ const navigate = useNavigate();
 
               {/* email */}
               <label className="label">Email</label>
-              <input name='email' type="email" className="input" placeholder="Email" />
+              <input name='email' type="email" className="input" placeholder="Email" required />
 
               {/* password */}
               <label className="label">Password</label>
-              <input name='password' type="password" className="input" placeholder="Password" />
+              <input name='password' type="password" className="input" placeholder="Password" required/>
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
-
+             {
+              error && <p className='text-red-400 text-xs '>{error}</p>
+             }
               <button type='submit' className="btn btn-neutral mt-4">Login</button>
               <p className="font-semibold text-center pt-5">
                 Dont’t Have An Account ?{" "}
