@@ -2,10 +2,12 @@ import React, { use } from "react";
 import { AuthContext } from "./AuthProvider";
 import { Navigate } from "react-router";
 import Loading from "../pages/Loading";
+import { useLocation } from "react-router";
 
 const PrivetRoute = ({ children }) => {
   const { user,loading } = use(AuthContext);  //step-2
-  console.log(user);
+//   console.log(user);
+const location = useLocation();
   
   //step-3
   if(loading){
@@ -19,7 +21,7 @@ const PrivetRoute = ({ children }) => {
   }
   else
   {
-    return <Navigate to='/auth/login'></Navigate>
+    return <Navigate state={location.pathname} to='/auth/login'></Navigate>
   }
 };
 

@@ -30,14 +30,14 @@
 
 //===========================AuthContext-steps=========================//
 //*
-1. Src er moddhe akta Authprovider.jsx name akta folder create korbo then rsc.AuthContext name akta context create korbo then export jate sob jaiga use korte pari.then authcontext kAuthprovider.jsx theke return kore dite HiOutlineBeaker.
-2.AuthContext er maddhole value share kora LuJapaneseYen.
-3. example er jonno akta state create koreci then and user and setUser k share korte chaile akta object create korte Hobe {Authdata}
-4.authContext er maddhome data gulo use korte chaaile value={authData} pass korte hobe.tahole <authContext> er peter moddhe data gulo use korte PiArrowBendDoubleUpLeft.
-5.Main.jsx e jiye <RouterProvider> </RouterProvider> k <AuthProvider> </AuthProvider> diye rapp kore debugErrorMap. tahole. authProvider er childrean holo routerProvider and routerProvider er childrean authProvider.
- Akhon Router Provider k jodi authProvider er moddhe pete chai taile akta special props {Childrean } use korbo. and childrean props ta k Auth contex er moddhe share kore debo AuthProvider.jsx er moddhe. "Akhon j kono component ei auth data use korte parbe"
-6.1st Navbar.jsx e joid use kori-> navbvar.jsx e jabo then const {user}=use(AuthContext)--[navbar.jsx] version 1 e ase baki ta.
-7.Firebase part e baki ta
+// 1. Src er moddhe akta Authprovider.jsx name akta folder create korbo then rsc.AuthContext name akta context create korbo then export jate sob jaiga use korte pari.then authcontext kAuthprovider.jsx theke return kore dite HiOutlineBeaker.
+// 2.AuthContext er maddhole value share kora LuJapaneseYen.
+// 3. example er jonno akta state create koreci then and user and setUser k share korte chaile akta object create korte Hobe {Authdata}
+// 4.authContext er maddhome data gulo use korte chaaile value={authData} pass korte hobe.tahole <authContext> er peter moddhe data gulo use korte PiArrowBendDoubleUpLeft.
+// 5.Main.jsx e jiye <RouterProvider> </RouterProvider> k <AuthProvider> </AuthProvider> diye rapp kore debugErrorMap. tahole. authProvider er childrean holo routerProvider and routerProvider er childrean authProvider.
+//  Akhon Router Provider k jodi authProvider er moddhe pete chai taile akta special props {Childrean } use korbo. and childrean props ta k Auth contex er moddhe share kore debo AuthProvider.jsx er moddhe. "Akhon j kono component ei auth data use korte parbe"
+// 6.1st Navbar.jsx e joid use kori-> navbvar.jsx e jabo then const {user}=use(AuthContext)--[navbar.jsx] version 1 e ase baki ta.
+// 7.Firebase part e baki ta
 
 //
 //======================AuthCondext-code. version-[1]- context setup done=============================//
@@ -46,7 +46,7 @@
 
 
 import React, { createContext } from 'react';
-import { RouterProvider } from 'react-router'
+import { RouterProvider, useNavigate } from 'react-router'
 export const AuthContext = createContext();
 
 const AuthProvider = ({childrean}) => {
@@ -341,13 +341,13 @@ export default Login;
 //-------51-5----------end-----------------
 
 //================Privet Route implementation jate user logout hole news dekte na pare==========================//
-1.Router.jsx er moddhe :
-  {
-    path: "/news-details/:id",
-    element: <NewsDetails></NewsDetails>,
-    loader:()=>fetch('/news.json')
-  },
-eta k change <PrivetRoute> </PrivetRoute> er moddhe rap korte hobe
+// 1.Router.jsx er moddhe :
+//   {
+//     path: "/news-details/:id",
+//     element: <NewsDetails></NewsDetails>,
+//     loader:()=>fetch('/news.json')
+//   },
+// eta k change <PrivetRoute> </PrivetRoute> er moddhe rap korte hobe
  //if->user thake  return childdrean else navigain-> login
 
 //  1.user ase ki na user anbo authContext theke
@@ -355,3 +355,9 @@ eta k change <PrivetRoute> </PrivetRoute> er moddhe rap korte hobe
 //     setLoading share kore debo
 //3.tarpor privetRoute.jsx e loading ta add kore debo const {user,loading}=use(AuthContext) er moddhe. the check korbo if(loading) kine hole sipnner dekhabo. 
 //4.Aro vlo kore dekhanor jonno Loading.jsx component er moddhe loading ta diye privetRoute e import korci.
+//5. login na kore read more e click korle login page e niye jay but akhon user login korle jokhon read more e click korle specific news e jawar kotha cilo seta redirtectly nisse na  eta solve korar jonno : privet router e "const location= useLoaction" hook use korbo.
+//6. <Navigate state={location.pathname} to='/auth/login'></Navigate> moddhe state={} props hisebe pathai debo
+//7.login.jsx e-> const location=useLocation() ta abr nebo tahole console e path dekha jbe console korle . akhon jokhon signin korbe take navigate kore pathai debo login successful howar por.
+// const  navigate=useNavigate() use korbo. "navigate(`${location.state?location.state :"/"}`)" hole location.sate na hole homepage
+
+
