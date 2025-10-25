@@ -365,5 +365,34 @@ export default Login;
 
 //================login er somoy error dekhanor jonno login.jsx============
 //1.const [error,setError]=useState() then setError(errorCode)
-//2.registr.jsx e->
+//2.registr.jsx e->same kaj
+
+
+
+
+//-==========================update user using firebase=================
+//1. Authprovider.jsx e-> const updateUser(updateData) nibo then tar moddhe updateProfile(auth.currentUser,updateData) fiarebase/auth theke nibo . tarpor updateUser k share kore debo authData te;
+//2.register.jsx e giye updateUser j distructure kore createUser er moddhe call kore debo. tarpor updateUser({displayName:name,photoURL:photo});
+//3; setUser k update er moddhe r catch block add korte hobe.
+
+//  createUser(email, password)
+//       .then((result) => {
+//         const user = result.user;
+//         // console.log(user)
+//         updateUser({ displayName: name, photoURL: photo })
+//           .then(() => {
+//             setUser(user);
+//           })
+//           .catch((error) => {
+//             console.log(error)
+//           });
+//         // setUser(user)
+//       })
+
+//       .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         alert(errorMessage);
+//       });
+//   };
 
