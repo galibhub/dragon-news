@@ -21,7 +21,7 @@ const CategoryNews = () => {
     } 
     else {
       const filteredNews = data.filter((news) => news.category_id == id);
-      console.log(filteredNews);
+      // console.log(filteredNews);
       setCategoryNews(filteredNews);
     }
   }, [data, id]); // data and id cames from outside-dependency
